@@ -1,0 +1,13 @@
+const express = require('express');
+const router = express.Router();
+const userController = require('../controllers/userController');
+const auth = require('../middleware/auth');
+
+router.post('/register', userController.register);
+router.post('/login', userController.login);
+router.get('/profile', auth, userController.getProfile);
+router.put('/preferences', auth, userController.updatePreferences);
+router.post('/readlist', auth, userController.addToReadList);
+router.get('/recommendations', auth, userController.getRecommendations);
+
+module.exports = router;
